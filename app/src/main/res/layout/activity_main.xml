@@ -4,13 +4,162 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#CBFFFFFF"
     tools:context=".MainActivity">
 
 
-<TextView
+<RelativeLayout
+    android:id="@+id/lay1"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="hello"/>
+    android:padding="15dp">
+
+
+    <ImageView
+        android:id="@+id/notification"
+        android:layout_width="22dp"
+        android:onClick="gotonotification"
+        android:layout_height="22dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/notification_icon" />
+
+</RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/lay"
+        android:layout_below="@id/lay1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginHorizontal="20dp"
+            android:background="@drawable/nav_back2">
+
+            <TextView
+                android:id="@+id/username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:fontFamily="@font/roboto_condensed_light"
+                android:textColor="@color/white"
+                android:textSize="22sp"
+                android:paddingTop="15dp"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp" />
+
+            <TextView
+                android:id="@+id/user_phone"
+                android:layout_below="@id/username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:fontFamily="@font/roboto_condensed_light"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:paddingTop="1dp"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp" />
+
+            <TextView
+                android:id="@+id/txtonline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Offline"
+                android:textStyle="bold"
+                android:fontFamily="@font/roboto_condensed_light"
+                android:textColor="#E91E63"
+                android:layout_alignParentBottom="true"
+                android:textSize="16sp"
+                android:paddingBottom="5dp"
+                android:paddingStart="15dp"
+                android:paddingEnd="15dp" />
+            <ImageView
+                android:id="@+id/offlineimg"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/visibility_off"
+                android:onClick="offline" />
+
+
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/lay2"
+        android:layout_below="@id/lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        android:paddingBottom="8dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Find your orders"
+            android:fontFamily="@font/alata"
+            android:textColor="#B7000000"
+            android:textSize="30sp" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/lay3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="15dp"
+        android:layout_below="@id/lay2">
+
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:background="@drawable/marker"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="30dp"
+            android:fontFamily="@font/roboto_condensed_light"
+            android:text="citiview,lagos nigeria"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+    
+
+
+
+
+    <RelativeLayout
+        android:layout_below="@id/lay3"
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </RelativeLayout>
+    
+
+    
+    
+    
+    
+    
+    
 
     <LinearLayout
         android:id="@+id/bottomnav"

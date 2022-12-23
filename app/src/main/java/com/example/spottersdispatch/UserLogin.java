@@ -77,7 +77,7 @@ public class UserLogin extends AppCompatActivity {
     private Executor executor;
     private BiometricPrompt biometricPrompt;
     private BiometricPrompt.PromptInfo promptInfo;
-    private final static String Url_login =  "https://iufmp.spotters.tech/android/login.php";
+    private final static String Url_login =  "https://spotters.tech/dispatch_app/android/login.php";
 
     //    importing shared prefrrence
     SharedPreferences sharedPreferences;
@@ -89,6 +89,7 @@ public class UserLogin extends AppCompatActivity {
     private static final String KEY_LNAME = "lname";
     private static final String KEY_EMAIL = "email";
     private static final String KEY_ID = "id";
+    private static final String KEY_STATUS = "status";
     //    private static final String KEY_PHONE = "phone";
     String Phonen;
 
@@ -267,7 +268,9 @@ public class UserLogin extends AppCompatActivity {
                             String phone = object.getString("phone").trim();
                             String email = object.getString("email").trim();
                             String id = object.getString("id").trim();
-                            String sign_up_date = object.getString("sign_up_date").trim();
+                            String status =  object.getString("status").trim();
+                           // String sign_up_date = object.getString("sign_up_date").t
+                            // rim();
 
                             SharedPreferences.Editor editor = sharedPreferences.edit();
                             editor.putString(KEY_PASSWORD,password.toString());
@@ -276,6 +279,7 @@ public class UserLogin extends AppCompatActivity {
                             editor.putString(KEY_EMAIL,email.toString());
                             editor.putString(KEY_LNAME,lastname.toString());
                             editor.putString(KEY_ID,id.toString());
+                            editor.putString(KEY_STATUS,status.toString());
 
                             editor.apply();
 
@@ -285,9 +289,10 @@ public class UserLogin extends AppCompatActivity {
                             gotoWelcomeActivity.putExtra("firstname", firstname);
                             gotoWelcomeActivity.putExtra("lastname", lastname);
                             gotoWelcomeActivity.putExtra("phone", phone);
-                            gotoWelcomeActivity.putExtra("email", email);
+                             gotoWelcomeActivity.putExtra("email", email);
                             gotoWelcomeActivity.putExtra("id", id);
-                            gotoWelcomeActivity.putExtra("sign_up_date", sign_up_date);
+                            gotoWelcomeActivity.putExtra("status", status);
+                           // gotoWelcomeActivity.putExtra("sign_up_date", sign_up_date);
                             startActivity(gotoWelcomeActivity);
                             load.setVisibility(View.GONE);
                             finish();

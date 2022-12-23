@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:id="@+id/ACCEPTED"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/home_container"
+            android:backgroundTint="@color/white"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/successmsg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:padding="4dp"
+                android:text="SUCCESS"
+                android:textColor="#4CAF50"
+                android:textSize="14sp" />
+
+            <!--            row1-->
+            <RelativeLayout
+                android:id="@+id/row_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/nametxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/alice"
+                    android:paddingTop="4dp"
+                    android:text="Name:"
+                    android:textColor="@color/gray"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/profilename"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="48dp"
+                    android:fontFamily="@font/alice"
+                    android:paddingTop="4dp"
+                    android:text="John app"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+            </RelativeLayout>
+
+            <!--            row2-->
+            <RelativeLayout
+                android:id="@+id/row_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/row_1"
+                android:paddingTop="5dp">
+
+
+            </RelativeLayout>
+
+            <!--            row3-->
+            <RelativeLayout
+                android:id="@+id/row_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/row_2"
+                android:paddingTop="5dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/alice"
+                    android:paddingTop="4dp"
+                    android:text="Destination :"
+                    android:textColor="@color/gray"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/destination_his"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="90dp"
+                    android:maxLength="42"
+                    android:paddingTop="4dp"
+                    android:fontFamily="@font/alice"
+                    android:text="Blood pressure monitor"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/row_4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/row_3"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:paddingTop="5dp">
+
+                <TextView
+                    android:id="@+id/order_id_his"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                   android:layout_alignParentStart="true"
+                    android:maxLength="42"
+                    android:paddingTop="4dp"
+                    android:paddingLeft="10dp"
+                   android:fontFamily="@font/alice"
+                    android:text="SP-ddh363"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/date_delivered"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:maxLength="42"
+                    android:paddingTop="4dp"
+                    android:paddingLeft="10dp"
+                    android:fontFamily="@font/alice"
+                    android:text="09-19-2020"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"/>
+
+                <TextView
+                    android:id="@+id/btn_details"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:maxLength="42"
+                    android:paddingTop="4dp"
+                    android:paddingLeft="10dp"
+                    android:fontFamily="@font/alice"
+                    android:text="details"
+                    android:layout_centerVertical="true"
+                    android:textColor="#FF0000"
+                    android:textSize="20sp"/>
+
+
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.8dp"
+                android:layout_below="@id/row_4"
+                android:background="#97000000" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="18dp">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="15dp"
+            android:background="@drawable/ic_baseline_mail_24" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="15dp"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/ic_baseline_arrow_forward_ios_24" />
+
+        <LinearLayout
+            android:id="@+id/layout_2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="58dp">
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_condensed_light"
+                android:text="exciting prizes up for grabs"
+                android:textAllCaps="true"
+                android:textColor="#C6000000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif-monospace"
+                android:text="2022-07-18"
+                android:textAllCaps="true"
+                android:textSize="10sp"
+                android:textColor="#C1000000" />
+        </LinearLayout>
+
+
+        <View
+            android:layout_below="@+id/layout_2"
+            android:layout_width="match_parent"
+            android:layout_height="1sp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="10dp"
+            android:background="#C6C4C4"
+            android:layout_marginStart="10dp"/>
+
+
+
+
+    </RelativeLayout>
+
+
+
+</LinearLayout>
