@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:paddingTop="50dp"
+    android:paddingBottom="50dp"
+    android:background="@color/white">
+
+    <ImageView
+        android:id="@+id/successimg"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:elevation="30dp"
+        android:adjustViewBounds="true"
+        android:layout_marginBottom="20dp"
+        android:src="@drawable/ok" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/successimg"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif-condensed"
+        android:text="Login successful"
+        android:textColor="@color/black"
+        android:textSize="25sp" />
+
+
+</LinearLayout>

@@ -5,20 +5,26 @@ public class Product {
     private String Receipient_name;
     private String Receipient_Phone;
     private String Reciepient_Address;
-    private String distance;
-    String destination;
+    private String package_name;
+    private String package_weight;
+    private String receiver_name;
+    private String receiver_phone;
+    private String destination;
 
 
     public Product() {
 
     }
 
-    public Product(String order_id, String receipient_name, String receipient_Phone, String reciepient_Address, String distance, String destination) {
+    public Product(String order_id, String receipient_name, String receipient_Phone, String reciepient_Address, String package_name, String destination, String package_weight, String receiver_name, String receiver_phone) {
         Order_id = order_id;
         Receipient_name = receipient_name;
         Receipient_Phone = receipient_Phone;
         Reciepient_Address = reciepient_Address;
-        this.distance = distance;
+        this.package_name = package_name;
+        this.package_weight = package_weight;
+        this.receiver_name = receiver_name;
+        this.receiver_phone = receiver_phone;
         this.destination = destination;
     }
 
@@ -38,8 +44,20 @@ public class Product {
         return Reciepient_Address;
     }
 
-    public String getDistance() {
-        return distance;
+    public String getPackage_name() {
+        return package_name;
+    }
+
+    public String getPackage_weight() {
+        return package_weight;
+    }
+
+    public String getReceiver_name() {
+        return receiver_name;
+    }
+
+    public String getReceiver_phone() {
+        return receiver_phone;
     }
 
     public String getDestination() {

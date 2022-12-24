@@ -4,19 +4,11 @@ package com.example.spottersdispatch;
 import static androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG;
 import static androidx.biometric.BiometricManager.Authenticators.DEVICE_CREDENTIAL;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SwitchCompat;
-import androidx.biometric.BiometricManager;
-import androidx.biometric.BiometricPrompt;
-import androidx.core.content.ContextCompat;
-import androidx.fragment.app.Fragment;
-
-import android.content.Context;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.Settings;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
@@ -24,29 +16,19 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.lang.reflect.Method;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.Executor;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.biometric.BiometricManager;
+import androidx.biometric.BiometricPrompt;
+import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.content.ContextCompat;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -66,9 +48,10 @@ import java.util.concurrent.Executor;
 
 public class UserLogin extends AppCompatActivity {
 
-
-    private static final int REQUEST_CODE =101010;
-    EditText phone,password;
+    ConstraintLayout cont_lay;
+    TextView cont_msg;
+    private static final int REQUEST_CODE = 101010;
+    EditText phone, password;
     Button log_btn;
     ProgressBar load;
     ImageView fingerprintimg;
@@ -77,7 +60,7 @@ public class UserLogin extends AppCompatActivity {
     private Executor executor;
     private BiometricPrompt biometricPrompt;
     private BiometricPrompt.PromptInfo promptInfo;
-    private final static String Url_login =  "https://spotters.tech/dispatch_app/android/login.php";
+    private final static String Url_login = "https://spotters.tech/dispatch_app/android/login.php";
 
     //    importing shared prefrrence
     SharedPreferences sharedPreferences;
@@ -94,15 +77,18 @@ public class UserLogin extends AppCompatActivity {
     String Phonen;
 
 
-
 //    public void methfing(SwitchCompat fing) {
 //        fingerprintimg.setVisibility(View.VISIBLE);
 //    }
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_userlogin);
+
+        cont_lay = findViewById(R.id.cont_lay);
+        cont_msg = findViewById(R.id.cont_msg);
 
         phone = findViewById(R.id.log_phone);
         password = findViewById(R.id.log_password);
@@ -112,15 +98,14 @@ public class UserLogin extends AppCompatActivity {
         load = findViewById(R.id.progressBar);
 
 
+        sharedPreferences = getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
 
-        sharedPreferences = getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE);
-
-        Phonen = sharedPreferences.getString(KEY_PHONE,null);
-        String fnamen = sharedPreferences.getString(KEY_FNAME,null);
-        String fid = sharedPreferences.getString(KEY_ID,null);
-        String lnamen = sharedPreferences.getString(KEY_LNAME,null);
-        String lphone = sharedPreferences.getString(KEY_PHONE,null);
-        String lpassword = sharedPreferences.getString(KEY_PASSWORD,null);
+        Phonen = sharedPreferences.getString(KEY_PHONE, null);
+        String fnamen = sharedPreferences.getString(KEY_FNAME, null);
+        String fid = sharedPreferences.getString(KEY_ID, null);
+        String lnamen = sharedPreferences.getString(KEY_LNAME, null);
+        String lphone = sharedPreferences.getString(KEY_PHONE, null);
+        String lpassword = sharedPreferences.getString(KEY_PASSWORD, null);
 //        if(Phonen != null && fnamen != null && lnamen != null && fid != null ){
 //            Intent gotoWelcomeActivity = new Intent(UserLogin.this, MainActivity .class);
 //            startActivity(gotoWelcomeActivity);
@@ -128,8 +113,8 @@ public class UserLogin extends AppCompatActivity {
 //        }
 
 
-        boolean finger = getIntent().getBooleanExtra("key",false);
-        if(finger == true){
+        boolean finger = getIntent().getBooleanExtra("key", false);
+        if (finger == true) {
             fingerprintimg.setVisibility(View.VISIBLE);
 
         }
@@ -138,15 +123,15 @@ public class UserLogin extends AppCompatActivity {
             @Override
             public boolean onTouch(View view, MotionEvent motionEvent) {
                 final int Right = 2;
-                if (motionEvent.getAction() == MotionEvent.ACTION_UP){
-                    if (motionEvent.getRawX()>=password.getRight()-password.getCompoundDrawables()[Right].getBounds().width()){
+                if (motionEvent.getAction() == MotionEvent.ACTION_UP) {
+                    if (motionEvent.getRawX() >= password.getRight() - password.getCompoundDrawables()[Right].getBounds().width()) {
                         int selection = password.getSelectionEnd();
-                        if(passwordvisible){
-                            password.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.visibility_off,0 );
+                        if (passwordvisible) {
+                            password.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.visibility_off, 0);
                             password.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                            passwordvisible= false;
-                        }else{
-                            password.setCompoundDrawablesRelativeWithIntrinsicBounds(0,0,R.drawable.ic_baseline_visibility_24,0);
+                            passwordvisible = false;
+                        } else {
+                            password.setCompoundDrawablesRelativeWithIntrinsicBounds(0, 0, R.drawable.ic_baseline_visibility_24, 0);
                             password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                             passwordvisible = true;
                         }
@@ -215,7 +200,6 @@ public class UserLogin extends AppCompatActivity {
                 .build();
 
 
-
         fingerprintimg.setOnClickListener(view -> {
             biometricPrompt.authenticate(promptInfo);
         });
@@ -227,14 +211,13 @@ public class UserLogin extends AppCompatActivity {
                 final String phoneT = phone.getText().toString().trim();
                 final String passwordT = password.getText().toString().trim();
 
-                if(phoneT.isEmpty() || passwordT.isEmpty()){
+                if (phoneT.isEmpty() || passwordT.isEmpty()) {
                     phone.setError("Empty field");
                     password.setError("Empty field");
 
-                }else{
+                } else {
                     proceedlogin();
                 }
-
 
 
             }
@@ -252,8 +235,8 @@ public class UserLogin extends AppCompatActivity {
         final String password = this.password.getText().toString().trim();
 
 
-
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Url_login, new Response.Listener<String>() {
+            @SuppressLint("ResourceAsColor")
             @Override
             public void onResponse(String response) {
                 try {
@@ -268,35 +251,35 @@ public class UserLogin extends AppCompatActivity {
                             String phone = object.getString("phone").trim();
                             String email = object.getString("email").trim();
                             String id = object.getString("id").trim();
-                            String status =  object.getString("status").trim();
-                           // String sign_up_date = object.getString("sign_up_date").t
+                            String status = object.getString("status").trim();
+                            // String sign_up_date = object.getString("sign_up_date").t
                             // rim();
 
                             SharedPreferences.Editor editor = sharedPreferences.edit();
-                            editor.putString(KEY_PASSWORD,password.toString());
-                            editor.putString(KEY_PHONE,phone.toString());
-                            editor.putString(KEY_FNAME,firstname.toString());
-                            editor.putString(KEY_EMAIL,email.toString());
-                            editor.putString(KEY_LNAME,lastname.toString());
-                            editor.putString(KEY_ID,id.toString());
-                            editor.putString(KEY_STATUS,status.toString());
+                            editor.putString(KEY_PASSWORD, password.toString());
+                            editor.putString(KEY_PHONE, phone.toString());
+                            editor.putString(KEY_FNAME, firstname.toString());
+                            editor.putString(KEY_EMAIL, email.toString());
+                            editor.putString(KEY_LNAME, lastname.toString());
+                            editor.putString(KEY_ID, id.toString());
+                            editor.putString(KEY_STATUS, status.toString());
 
                             editor.apply();
 
 //                            sessionManager.createSession(firstname, lastname, phone, email, id, sign_up_date);
 
-                            Intent gotoWelcomeActivity = new Intent(UserLogin.this, MainActivity .class);
-                            gotoWelcomeActivity.putExtra("firstname", firstname);
-                            gotoWelcomeActivity.putExtra("lastname", lastname);
-                            gotoWelcomeActivity.putExtra("phone", phone);
-                             gotoWelcomeActivity.putExtra("email", email);
-                            gotoWelcomeActivity.putExtra("id", id);
-                            gotoWelcomeActivity.putExtra("status", status);
-                           // gotoWelcomeActivity.putExtra("sign_up_date", sign_up_date);
-                            startActivity(gotoWelcomeActivity);
+                            // gotoWelcomeActivity.putExtra("sign_up_date", sign_up_date);
                             load.setVisibility(View.GONE);
-                            finish();
+                            createdialog(firstname, lastname, phone, email, id, status);
+                            // finish();
                         }
+
+                    } else {
+                        load.setVisibility(View.GONE);
+                        cont_lay.setBackgroundColor(R.color.red);
+                        cont_msg.setText("Phone digits or password is incorrect");
+                        cont_lay.setVisibility(View.VISIBLE);
+                        log_btn.setVisibility(View.VISIBLE);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -314,7 +297,7 @@ public class UserLogin extends AppCompatActivity {
                 log_btn.setVisibility(View.VISIBLE);
 
             }
-        }){
+        }) {
             @Nullable
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
@@ -327,5 +310,29 @@ public class UserLogin extends AppCompatActivity {
 
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
+    }
+
+    @SuppressLint("ResourceAsColor")
+    private void createdialog(String firstname, String lastname, String phone, String email, String id, String status) {
+        cont_lay.setVisibility(View.VISIBLE);
+        cont_msg.setText("Login Successful");
+        cont_lay.setVisibility(View.VISIBLE);
+        cont_lay.setBackgroundColor(R.color.green);
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                cont_lay.setVisibility(View.GONE);
+                Intent intent = new Intent(UserLogin.this, MainActivity.class);
+                intent.putExtra("firstname", firstname);
+                intent.putExtra("lastname", lastname);
+                intent.putExtra("phone", phone);
+                intent.putExtra("email", email);
+                intent.putExtra("id", id);
+                intent.putExtra("status", status);
+                UserLogin.this.startActivity(intent);
+                UserLogin.this.finish();
+            }
+        }, 2000);
     }
 }

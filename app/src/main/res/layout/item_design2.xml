@@ -112,7 +112,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/roboto_condensed_light"
                         android:paddingTop="4dp"
-                        android:text="Pickup location :"
+                        android:text="Drop off location :"
                         android:textColor="@color/gray"
                         android:textSize="15sp"
                         android:textStyle="bold" />
@@ -121,7 +121,7 @@
                         android:id="@+id/deliverylocation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="95dp"
+                        android:layout_marginStart="110dp"
                         android:fontFamily="@font/roboto_condensed_light"
                         android:maxLength="42"
                         android:paddingTop="4dp"

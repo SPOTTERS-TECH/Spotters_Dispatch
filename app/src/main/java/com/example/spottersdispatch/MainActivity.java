@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerAdapter2.
     ImageView imgonline;
 
     private ArrayList<Product> userListt = new ArrayList<>();
-    final static String load_items_accepted = "https://iufmp.spotters.tech/android/accepted_order_request.php";
+    final static String load_items_accepted = "https://spotters.tech/dispatch_app/android/order_request.php";
     final static String url_updatestatus = "https://spotters.tech/dispatch_app/android/status_change.php";
 
     SharedPreferences sharedPreferences;
@@ -138,12 +138,12 @@ public class MainActivity extends AppCompatActivity implements RecyclerAdapter2.
 
                 if (selectedTab != 3){
 
-                    home_txt.setVisibility(View.GONE);
+                   // home_txt.setVisibility(View.GONE);
 
-                    home_lay.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                    //home_lay.setBackgroundColor(getResources().getColor(android.R.color.transparent));
 
-                    setting_txt.setVisibility(View.VISIBLE);
-                    setting_lay.setBackgroundResource(R.drawable.nav_back);
+                   // setting_txt.setVisibility(View.VISIBLE);
+                   // setting_lay.setBackgroundResource(R.drawable.nav_back);
 
                     ScaleAnimation animation = new ScaleAnimation(0.8f,1.0f,1f,1f, Animation.RELATIVE_TO_SELF,0.0f,Animation.RELATIVE_TO_SELF,0.0f);
                     animation.setDuration(200);
@@ -248,14 +248,17 @@ updatestatus();
                     JSONArray jsonArray = new JSONArray(response);
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject object = jsonArray.getJSONObject(i);
-                        String distance = object.getString("distance").trim();
+                        String package_name = object.getString("package_name").trim();
                         String order_id = object.getString("order_id").trim();
                         String rec_name = object.getString("rec_name").trim();
                         String rec_phone = object.getString("rec_phone").trim();
                         String rec_address = object.getString("rec_address").trim();
                         String destination = object.getString("destination").trim();
+                        String package_weight = object.getString("package_weight").trim();
+                        String receiver_name = object.getString("receiver_name").trim();
+                        String receiver_phone = object.getString("receiver_phone").trim();
 
-                        Product product = new Product(order_id, rec_name, rec_phone, rec_address, distance + "km", destination);
+                        Product product = new Product(order_id, rec_name, rec_phone, rec_address, package_name , destination, package_weight,receiver_name,receiver_phone);
 
                         userListt.add(0,product);
 
@@ -290,7 +293,7 @@ updatestatus();
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> params = new HashMap<>();
                 params.put("rider_id", fid);
-                params.put("status","Accepted");
+                params.put("status","Pending");
                 return params;
             }
         };
@@ -303,6 +306,10 @@ updatestatus();
         View view = getLayoutInflater().inflate(R.layout.settings_dialog,null,false);
         LinearLayout history = (LinearLayout) view.findViewById(R.id.history_lay);
         LinearLayout edit_password = (LinearLayout) view.findViewById(R.id.password_edit_lay);
+        LinearLayout complaint = (LinearLayout) view.findViewById(R.id.complaint_lay);
+        LinearLayout terms = (LinearLayout) view.findViewById(R.id.terms_lay);
+        LinearLayout policies = (LinearLayout) view.findViewById(R.id.policies_lay);
+        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) LinearLayout abouut = (LinearLayout) view.findViewById(R.id.about_lay);
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) LinearLayout profile = (LinearLayout) view.findViewById(R.id.profile_lay);
 
         history.setOnClickListener(new View.OnClickListener() {
@@ -313,6 +320,38 @@ updatestatus();
             }
         });
 
+        abouut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+                startActivity(new Intent(getApplicationContext(), com.example.spottersdispatch.About.class));
+            }
+        });
+
+
+        policies.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+                startActivity(new Intent(getApplicationContext(), com.example.spottersdispatch.Privacy_policy.class));
+            }
+        });
+
+        complaint.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+                startActivity(new Intent(getApplicationContext(), com.example.spottersdispatch.Complaint.class));
+            }
+        });
+
+        terms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+                startActivity(new Intent(getApplicationContext(), com.example.spottersdispatch.Terms_of_service.class));
+            }
+        });
         edit_password.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -335,6 +374,17 @@ updatestatus();
     @Override
     public void onItemClickproduct(Product product) {
 
+        Intent intent = new Intent(getApplicationContext(), order_details.class);
+        intent.putExtra("id", product.getOrder_id());
+        intent.putExtra("sender_name", product.getReceipient_name());
+        intent.putExtra("sender_phone", product.getReceipient_Phone());
+        intent.putExtra("add", product.getReciepient_Address());
+        intent.putExtra("destination",product.getDestination());
+        intent.putExtra("package_name",product.getPackage_name());
+        intent.putExtra("package_weight",product.getPackage_weight());
+        intent.putExtra("receiver_name",product.getReceiver_name());
+        intent.putExtra("receiver_phone",product.getReceiver_phone());
+        startActivity(intent);
     }
 
     public void gotonotification(View view) {

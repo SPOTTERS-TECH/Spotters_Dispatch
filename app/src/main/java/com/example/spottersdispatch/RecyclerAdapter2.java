@@ -38,7 +38,7 @@ public class RecyclerAdapter2 extends RecyclerView.Adapter<RecyclerAdapter2.view
         holder.ordernumb.setText(List.get(position).getOrder_id());
         holder.receipentname.setText(List.get(position).getReceipient_name());
         holder.receipent_phone.setText(List.get(position).getReceipient_Phone());
-        holder.deliveryLocation.setText(List.get(position).getReciepient_Address());
+        holder.deliveryLocation.setText(List.get(position).getDestination());
 
         holder.order_btn.setOnClickListener(new View.OnClickListener() {
             @Override

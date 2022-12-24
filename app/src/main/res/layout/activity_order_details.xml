@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".order_details">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:padding="20dp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:onClick="backbtn"
+            android:background="@drawable/ic_baseline_arrow_back_24"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="Order details"
+            android:textColor="@color/main"
+            android:textSize="20sp"/>
+
+    </RelativeLayout>
+
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="15dp"
+        android:layout_margin="20dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="5dp"
+            android:weightSum="3">
+
+            <RelativeLayout
+                android:id="@+id/row1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:paddingLeft="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/alice"
+                    android:textSize="16sp"
+                    android:layout_alignParentStart="true"
+                    android:text="Sender Name"/>
+
+                <TextView
+                    android:id="@+id/sender_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/alice"
+                    android:textColor="@color/black"
+                    android:paddingEnd="15dp"
+                    android:layout_alignParentEnd="true"
+                    android:text="John Paul"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/row2"
+                android:layout_below="@id/row1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:paddingLeft="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/alice"
+                    android:textSize="16sp"
+                    android:layout_alignParentStart="true"
+                    android:text="Receiver name"/>
+
+                <TextView
+                    android:id="@+id/receiver_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/alice"
+                    android:textColor="@color/black"
+                    android:paddingEnd="15dp"
+                    android:layout_alignParentEnd="true"
+                    android:text="Samuel"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/row3"
+                android:layout_below="@id/row2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:paddingLeft="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/alice"
+                    android:textSize="16sp"
+                    android:layout_alignParentStart="true"
+                    android:text="Sender Address"/>
+
+                <TextView
+                    android:id="@+id/sender_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/alice"
+                    android:textColor="@color/black"
+                    android:paddingEnd="15dp"
+                    android:layout_alignParentEnd="true"
+                    android:text="ikorodu road"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/row4"
+                android:layout_below="@id/row3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:paddingLeft="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/alice"
+                    android:textSize="16sp"
+                    android:layout_alignParentStart="true"
+                    android:text="Receiver Destination"/>
+
+                <TextView
+                    android:id="@+id/sender_destination"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/alice"
+                    android:textColor="@color/black"
+                    android:paddingEnd="15dp"
+                    android:layout_alignParentEnd="true"
+                    android:text="ikeja way"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/row5"
+                android:layout_below="@id/row4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:paddingLeft="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/alice"
+                    android:textSize="16sp"
+                    android:layout_alignParentStart="true"
+                    android:text="Sender Phone"/>
+
+                <TextView
+                    android:id="@+id/sender_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/alice"
+                    android:textColor="@color/black"
+                    android:paddingEnd="15dp"
+                    android:layout_alignParentEnd="true"
+                    android:text="070765443"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/row6"
+                android:layout_below="@id/row5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:paddingLeft="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/alice"
+                    android:textSize="16sp"
+                    android:layout_alignParentStart="true"
+                    android:text="Package type"/>
+
+                <TextView
+                    android:id="@+id/package_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/alice"
+                    android:textColor="@color/black"
+                    android:paddingEnd="15dp"
+                    android:layout_alignParentEnd="true"
+                    android:text="laptop"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/row7"
+                android:layout_below="@id/row6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:paddingLeft="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/alice"
+                    android:textSize="16sp"
+                    android:layout_alignParentStart="true"
+                    android:text="Date delivered"/>
+
+                <TextView
+                    android:id="@+id/date_completed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/alice"
+                    android:textColor="@color/black"
+                    android:paddingEnd="15dp"
+                    android:layout_alignParentEnd="true"
+                    android:text="21-12-2022"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/row8"
+                android:layout_below="@id/row7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:paddingLeft="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/alice"
+                    android:textSize="16sp"
+                    android:layout_alignParentStart="true"
+                    android:text="Order Id"/>
+
+                <TextView
+                    android:id="@+id/Sender_order_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:textSize="20sp"
+                    android:fontFamily="@font/alice"
+                    android:textColor="@color/black"
+                    android:paddingEnd="15dp"
+                    android:layout_alignParentEnd="true"
+                    android:text="SP-3478"/>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/row9"
+                android:layout_below="@id/row8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="30dp"
+                android:paddingLeft="15dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/alice"
+                    android:textSize="16sp"
+                    android:layout_alignParentStart="true"
+                    android:text="package image"/>
+
+                <ImageView
+                    android:id="@+id/package_img"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/ok"
+                    android:fontFamily="@font/alice"
+                    android:layout_marginEnd="15dp"
+                    android:textColor="@color/black"
+                    android:paddingEnd="15dp"
+                    android:layout_alignParentEnd="true"
+                    android:text="SP-3478"/>
+
+            </RelativeLayout>
+
+
+
+
+        </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>

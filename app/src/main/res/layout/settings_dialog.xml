@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:background="@drawable/dialog_icons"
     android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
@@ -32,8 +33,8 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="75dp"
-                    android:background="#4CAF50"
+                    android:layout_height="70dp"
+                    android:background="#034B03"
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:orientation="vertical"
@@ -41,10 +42,10 @@
                     android:focusable="true">
 
                     <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_gravity="center"
-                        android:background="@drawable/edit_account"
+                        android:background="@drawable/customer"
                         android:gravity="center"
                         android:paddingBottom="5dp"
                         android:textColor="@color/white" />
@@ -76,8 +77,8 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="75dp"
-                    android:background="#4CAF50"
+                    android:layout_height="70dp"
+                    android:background="#034B03"
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:orientation="vertical"
@@ -85,10 +86,10 @@
                     android:focusable="true">
 
                     <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_gravity="center"
-                        android:background="@drawable/history_icon"
+                        android:background="@drawable/time_history"
                         android:gravity="center"
                         android:paddingBottom="5dp"
                         android:textColor="@color/white" />
@@ -119,8 +120,8 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="75dp"
-                    android:background="#4CAF50"
+                    android:layout_height="70dp"
+                    android:background="#034B03"
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:orientation="vertical"
@@ -128,10 +129,10 @@
                     android:focusable="true">
 
                     <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:layout_gravity="center"
-                        android:background="@drawable/password_icon"
+                        android:background="@drawable/password_lock"
                         android:gravity="center"
                         android:paddingBottom="5dp"
                         android:textColor="@color/white" />
@@ -150,6 +151,7 @@
 
             </LinearLayout>
             <LinearLayout
+                android:id="@+id/complaint_lay"
                 android:layout_width="0dp"
                 android:layout_height="105dp"
                 android:layout_marginEnd="10dp"
@@ -162,8 +164,8 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="75dp"
-                    android:background="#4CAF50"
+                    android:layout_height="70dp"
+                    android:background="#034B03"
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:orientation="vertical"
@@ -171,11 +173,11 @@
                     android:focusable="true">
 
                     <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:gravity="center"
                         android:layout_gravity="center"
-                        android:background="@drawable/compain_icon"
+                        android:background="@drawable/complaint"
                         android:textColor="@color/white"
                         android:paddingBottom="5dp"/>
                 </LinearLayout>
@@ -186,7 +188,7 @@
                     android:text="Complaint"
                     android:textColor="@color/main"
                     android:fontFamily="@font/alice"
-                    android:textSize="20sp"
+                    android:textSize="16sp"
                     android:paddingBottom="5dp"/>
 
             </LinearLayout>
@@ -202,6 +204,7 @@
 
 
             <LinearLayout
+                android:id="@+id/policies_lay"
                 android:layout_width="0dp"
                 android:layout_height="105dp"
                 android:layout_marginEnd="10dp"
@@ -214,8 +217,8 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="75dp"
-                    android:background="#4CAF50"
+                    android:layout_height="70dp"
+                    android:background="#034B03"
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:orientation="vertical"
@@ -223,8 +226,8 @@
                     android:focusable="true">
 
                     <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:gravity="center"
                         android:layout_gravity="center"
                         android:background="@drawable/policy"
@@ -244,6 +247,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/terms_lay"
                 android:layout_width="0dp"
                 android:layout_height="105dp"
                 android:layout_marginEnd="10dp"
@@ -256,8 +260,8 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="75dp"
-                    android:background="#4CAF50"
+                    android:layout_height="70dp"
+                    android:background="#034B03"
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:orientation="vertical"
@@ -265,11 +269,11 @@
                     android:focusable="true">
 
                     <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:gravity="center"
                         android:layout_gravity="center"
-                        android:background="@drawable/tos"
+                        android:background="@drawable/terms"
                         android:textColor="@color/white"
                         android:paddingBottom="5dp"/>
                 </LinearLayout>
@@ -286,6 +290,7 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/about_lay"
                 android:layout_width="0dp"
                 android:layout_height="105dp"
                 android:layout_marginEnd="10dp"
@@ -298,8 +303,8 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="75dp"
-                    android:background="#4CAF50"
+                    android:layout_height="70dp"
+                    android:background="#034B03"
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:orientation="vertical"
@@ -307,11 +312,11 @@
                     android:focusable="true">
 
                     <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:gravity="center"
                         android:layout_gravity="center"
-                        android:background="@drawable/compain_icon"
+                        android:background="@drawable/info"
                         android:textColor="@color/white"
                         android:paddingBottom="5dp"/>
                 </LinearLayout>
@@ -319,7 +324,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Complaint"
+                    android:text="About"
                     android:textColor="@color/main"
                     android:fontFamily="@font/alice"
                     android:textSize="20sp"
@@ -340,8 +345,8 @@
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="75dp"
-                    android:background="#4CAF50"
+                    android:layout_height="70dp"
+                    android:background="#034B03"
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:orientation="vertical"
@@ -349,11 +354,12 @@
                     android:focusable="true">
 
                     <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
                         android:gravity="center"
                         android:layout_gravity="center"
-                        android:background="@drawable/compain_icon"
+                        android:background="@drawable/logout"
+                        android:backgroundTint="#E91E63"
                         android:textColor="@color/white"
                         android:paddingBottom="5dp"/>
                 </LinearLayout>
@@ -361,7 +367,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Complaint"
+                    android:text="Logout"
                     android:textColor="@color/main"
                     android:fontFamily="@font/alice"
                     android:textSize="20sp"
