@@ -78,6 +78,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerAdapter2.
         txtonline = (TextView) findViewById(R.id.txtonline);
         user_phone = (TextView) findViewById(R.id.user_phone);
         imgonline = (ImageView) findViewById(R.id.offlineimg);
+        today_orders = findViewById(R.id.checkorder);
 
 
         sharedPreferences = this.getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
@@ -272,9 +273,10 @@ updatestatus();
                     adapter2.notifyDataSetChanged();
                     int count = 0;
                     if (adapter2 != null) {
-//                        count = adapter2.getItemCount();
-//                        today_orders.setText(count);
-//                        System.out.println("hey"+count);
+                        count = adapter2.getItemCount();
+                        String counts = String.valueOf(count);
+                        today_orders.setText(counts + " total orders");
+                        System.out.println("hey" + count);
                     }
 
                 } catch (JSONException e) {

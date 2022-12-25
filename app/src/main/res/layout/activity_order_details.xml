@@ -318,14 +318,21 @@
                     android:textColor="@color/black"
                     android:paddingEnd="15dp"
                     android:layout_alignParentEnd="true"
-                    android:text="SP-3478"/>
+                    android:text="SP-3478" />
 
             </RelativeLayout>
 
 
-
-
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
+
+    <com.google.android.material.button.MaterialButton
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:padding="15dp"
+        android:layout_marginTop="20dp"
+        android:text="Accept"
+        app:cornerRadius="20dp" />
 
 </LinearLayout>
