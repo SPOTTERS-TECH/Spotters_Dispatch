@@ -170,12 +170,6 @@
     </RelativeLayout>
     
 
-    
-    
-    
-    
-    
-    
 
     <LinearLayout
         android:id="@+id/bottomnav"
@@ -207,10 +201,10 @@
             
             <ImageView
                 android:id="@+id/home_img"
-                android:layout_width="20dp"
-                android:layout_height="wrap_content"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:adjustViewBounds="true"
-                android:src="@drawable/home"/>
+                android:src="@drawable/home" />
 
             <TextView
                 android:id="@+id/hometxt"
@@ -220,7 +214,38 @@
                 android:textStyle="bold"
                 android:layout_marginStart="10dp"
                 android:textSize="16sp"
-                android:textColor="@color/main"/>
+                android:textColor="@color/main" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/request_lay"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:paddingStart="5dp"
+            android:layout_marginEnd="25dp"
+            android:paddingEnd="5dp"
+            android:gravity="center"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/request_img"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:adjustViewBounds="true"
+                android:src="@drawable/requests" />
+
+            <TextView
+                android:id="@+id/requesttxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Request"
+                android:textStyle="bold"
+                android:visibility="gone"
+                android:layout_marginStart="10dp"
+                android:textSize="16sp"
+                android:textColor="@color/main" />
 
         </LinearLayout>
 
@@ -237,11 +262,11 @@
             android:layout_weight="1">
 
             <ImageView
-                    android:id="@+id/setting_img"
-                android:layout_width="20dp"
-                android:layout_height="wrap_content"
+                android:id="@+id/setting_img"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
                 android:adjustViewBounds="true"
-                android:src="@drawable/settings"/>
+                android:src="@drawable/settings" />
 
             <TextView
                 android:id="@+id/setting_txt"

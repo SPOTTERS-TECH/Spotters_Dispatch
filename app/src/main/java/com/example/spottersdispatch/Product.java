@@ -10,13 +10,14 @@ public class Product {
     private String receiver_name;
     private String receiver_phone;
     private String destination;
+    private String statusoforder;
 
 
     public Product() {
 
     }
 
-    public Product(String order_id, String receipient_name, String receipient_Phone, String reciepient_Address, String package_name, String destination, String package_weight, String receiver_name, String receiver_phone) {
+    public Product(String order_id, String receipient_name, String receipient_Phone, String reciepient_Address, String package_name, String package_weight, String receiver_name, String receiver_phone, String destination, String statusoforder) {
         Order_id = order_id;
         Receipient_name = receipient_name;
         Receipient_Phone = receipient_Phone;
@@ -26,6 +27,7 @@ public class Product {
         this.receiver_name = receiver_name;
         this.receiver_phone = receiver_phone;
         this.destination = destination;
+        this.statusoforder = statusoforder;
     }
 
     public String getOrder_id() {
@@ -62,5 +64,9 @@ public class Product {
 
     public String getDestination() {
         return destination;
+    }
+
+    public String getStatusoforder() {
+        return statusoforder;
     }
 }

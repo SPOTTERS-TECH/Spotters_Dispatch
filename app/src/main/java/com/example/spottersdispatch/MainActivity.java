@@ -4,23 +4,17 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.ScaleAnimation;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,28 +25,25 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
-import java.security.PrivateKey;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class MainActivity extends AppCompatActivity implements RecyclerAdapter2.onItemClickListener  {
+public class MainActivity extends AppCompatActivity implements RecyclerAdapter2.onItemClickListener {
 
-    BottomSheetDialog dialog ;
-    private int selectedTab  = 1;
-    RecyclerView  recyclerView2;
+    BottomSheetDialog dialog;
+    private int selectedTab = 1;
+    RecyclerView recyclerView2;
     RecyclerAdapter2 adapter2;
-    String fnamen,lnamen,phonen,status;
-    String rider_name,fid;
-    TextView today_orders,username,user_phone,txtonline;
+    String fnamen, lnamen, phonen, status;
+    String rider_name, fid;
+    TextView today_orders, username, user_phone, txtonline;
     String avalability = "Offline";
     ImageView imgonline;
 
@@ -87,47 +78,80 @@ public class MainActivity extends AppCompatActivity implements RecyclerAdapter2.
         lnamen = sharedPreferences.getString(KEY_LNAME, null);
         status = sharedPreferences.getString(KEY_STATUS, null);
         fid = sharedPreferences.getString(KEY_ID, null);
-        rider_name = fnamen+" "+lnamen;
+        rider_name = fnamen + " " + lnamen;
         if (phonen != null && fnamen != null && fid != null) {
-            username.setText("Hello, "+lnamen);
+            username.setText("Hello, " + lnamen);
             user_phone.setText(phonen);
             txtonline.setText(status);
-           String checkingimgonline =  txtonline.getText().toString();
-           if (checkingimgonline.equals("Online")){
-               imgonline.setBackgroundResource(R.drawable.ic_baseline_visibility_24);
-           }
+            String checkingimgonline = txtonline.getText().toString();
+            if (checkingimgonline.equals("Online")) {
+                imgonline.setBackgroundResource(R.drawable.ic_baseline_visibility_24);
+            }
         }
 
         LinearLayout home_lay = findViewById(R.id.home_lay);
         LinearLayout setting_lay = findViewById(R.id.setting_lay);
+        LinearLayout request_lay = findViewById(R.id.request_lay);
 
         TextView home_txt = findViewById(R.id.hometxt);
         TextView setting_txt = findViewById(R.id.setting_txt);
+        TextView request_txt = findViewById(R.id.requesttxt);
 
         ImageView setting_img = findViewById(R.id.setting_img);
         ImageView home_img = findViewById(R.id.home_img);
+        ImageView request_img = findViewById(R.id.request_img);
         dialog = new BottomSheetDialog(this);
 
         home_lay.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                if (selectedTab != 1){
+                if (selectedTab != 1) {
 
                     setting_txt.setVisibility(View.GONE);
+                    request_txt.setVisibility(View.GONE);
 
                     setting_lay.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                    request_lay.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+
 
                     home_txt.setVisibility(View.VISIBLE);
                     home_lay.setBackgroundResource(R.drawable.nav_back);
 
-                    ScaleAnimation animation = new ScaleAnimation(0.8f,1.0f,1f,1f, Animation.RELATIVE_TO_SELF,0.0f,Animation.RELATIVE_TO_SELF,0.0f);
+                    ScaleAnimation animation = new ScaleAnimation(0.8f, 1.0f, 1f, 1f, Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF, 0.0f);
                     animation.setDuration(200);
                     animation.setFillAfter(true);
                     home_lay.startAnimation(animation);
 
                     selectedTab = 1;
                 }
+
+            }
+        });
+
+        request_lay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (selectedTab != 2) {
+
+                    home_txt.setVisibility(View.GONE);
+                    setting_txt.setVisibility(View.GONE);
+
+                    setting_lay.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+                    home_lay.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+
+                    request_txt.setVisibility(View.VISIBLE);
+                    request_lay.setBackgroundResource(R.drawable.nav_back);
+
+                    ScaleAnimation animation = new ScaleAnimation(0.8f, 1.0f, 1f, 1f, Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF, 0.0f);
+                    animation.setDuration(200);
+                    animation.setFillAfter(true);
+                    request_lay.startAnimation(animation);
+
+                    selectedTab = 2;
+                }
+                startActivity(new Intent(getApplicationContext(), Accepted_orders.class));
 
 
             }
@@ -137,16 +161,16 @@ public class MainActivity extends AppCompatActivity implements RecyclerAdapter2.
             @Override
             public void onClick(View view) {
 
-                if (selectedTab != 3){
+                if (selectedTab != 3) {
 
-                   // home_txt.setVisibility(View.GONE);
+                    // home_txt.setVisibility(View.GONE);
 
                     //home_lay.setBackgroundColor(getResources().getColor(android.R.color.transparent));
 
-                   // setting_txt.setVisibility(View.VISIBLE);
-                   // setting_lay.setBackgroundResource(R.drawable.nav_back);
+                    // setting_txt.setVisibility(View.VISIBLE);
+                    // setting_lay.setBackgroundResource(R.drawable.nav_back);
 
-                    ScaleAnimation animation = new ScaleAnimation(0.8f,1.0f,1f,1f, Animation.RELATIVE_TO_SELF,0.0f,Animation.RELATIVE_TO_SELF,0.0f);
+                    ScaleAnimation animation = new ScaleAnimation(0.8f, 1.0f, 1f, 1f, Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF, 0.0f);
                     animation.setDuration(200);
                     animation.setFillAfter(true);
                     setting_lay.startAnimation(animation);
@@ -170,7 +194,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerAdapter2.
         load_items_accepted();
 
 
-updatestatus();
+        updatestatus();
 
 
         dialog.getWindow().clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
@@ -180,16 +204,16 @@ updatestatus();
         imgonline.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (avalability.equals("Offline")){
+                if (avalability.equals("Offline")) {
                     imgonline.setBackgroundResource(R.drawable.ic_baseline_visibility_24);
                     txtonline.setText("Online");
                     avalability = "Online";
-                }else{
+                } else {
                     imgonline.setBackgroundResource(R.drawable.visibility_off);
                     txtonline.setText("Offline");
                     avalability = "Offline";
                 }
-                String checkonline  = txtonline.getText().toString();
+                String checkonline = txtonline.getText().toString();
                 System.out.println(checkonline);
 
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, url_updatestatus, new Response.Listener<String>() {
@@ -198,9 +222,9 @@ updatestatus();
                         try {
                             JSONObject jsonObject = new JSONObject(response);
                             String success = jsonObject.getString("success");
-                            if (success.equals("1")){
-                               // Toast.makeText(getApplicationContext(), "You have accepted " + name + " request", Toast.LENGTH_LONG).show();
-                               // startActivity(new Intent(getApplicationContext(),MainActivity.class));
+                            if (success.equals("1")) {
+                                // Toast.makeText(getApplicationContext(), "You have accepted " + name + " request", Toast.LENGTH_LONG).show();
+                                // startActivity(new Intent(getApplicationContext(),MainActivity.class));
                                 //onRestart();
                             }
                         } catch (JSONException e) {
@@ -215,13 +239,13 @@ updatestatus();
                         Toast.makeText(getApplicationContext(), error.toString(), Toast.LENGTH_SHORT).show();
 
                     }
-                }){
+                }) {
                     @Nullable
                     @Override
                     protected Map<String, String> getParams() throws AuthFailureError {
                         HashMap<String, String> params = new HashMap<>();
-                        params.put("status",checkonline);
-                        params.put("ID",fid);
+                        params.put("status", checkonline);
+                        params.put("ID", fid);
 
                         return params;
                     }
@@ -232,7 +256,6 @@ updatestatus();
 
             }
         });
-
 
 
     }
@@ -258,11 +281,11 @@ updatestatus();
                         String package_weight = object.getString("package_weight").trim();
                         String receiver_name = object.getString("receiver_name").trim();
                         String receiver_phone = object.getString("receiver_phone").trim();
+                        String statusofitem = object.getString("status").trim();
 
-                        Product product = new Product(order_id, rec_name, rec_phone, rec_address, package_name , destination, package_weight,receiver_name,receiver_phone);
+                        Product product = new Product(order_id, rec_name, rec_phone, rec_address, package_name, package_weight, receiver_name, receiver_phone, destination, statusofitem);
 
-                        userListt.add(0,product);
-
+                        userListt.add(0, product);
 
 
                     }
@@ -295,7 +318,7 @@ updatestatus();
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> params = new HashMap<>();
                 params.put("rider_id", fid);
-                params.put("status","Pending");
+                params.put("status", "Pending");
                 return params;
             }
         };
@@ -305,7 +328,7 @@ updatestatus();
     }
 
     private void createdialog() {
-        View view = getLayoutInflater().inflate(R.layout.settings_dialog,null,false);
+        View view = getLayoutInflater().inflate(R.layout.settings_dialog, null, false);
         LinearLayout history = (LinearLayout) view.findViewById(R.id.history_lay);
         LinearLayout edit_password = (LinearLayout) view.findViewById(R.id.password_edit_lay);
         LinearLayout complaint = (LinearLayout) view.findViewById(R.id.complaint_lay);
@@ -381,21 +404,18 @@ updatestatus();
         intent.putExtra("sender_name", product.getReceipient_name());
         intent.putExtra("sender_phone", product.getReceipient_Phone());
         intent.putExtra("add", product.getReciepient_Address());
-        intent.putExtra("destination",product.getDestination());
-        intent.putExtra("package_name",product.getPackage_name());
-        intent.putExtra("package_weight",product.getPackage_weight());
-        intent.putExtra("receiver_name",product.getReceiver_name());
-        intent.putExtra("receiver_phone",product.getReceiver_phone());
+        intent.putExtra("destination", product.getDestination());
+        intent.putExtra("package_name", product.getPackage_name());
+        intent.putExtra("package_weight", product.getPackage_weight());
+        intent.putExtra("receiver_name", product.getReceiver_name());
+        intent.putExtra("receiver_phone", product.getReceiver_phone());
+        intent.putExtra("statusofitem", product.getStatusoforder());
         startActivity(intent);
     }
 
     public void gotonotification(View view) {
-        startActivity(new Intent(getApplicationContext(),Notification.class));
+        startActivity(new Intent(getApplicationContext(), Notification.class));
     }
-
-
-
-
 
 
 }
