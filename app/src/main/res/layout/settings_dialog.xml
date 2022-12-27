@@ -57,9 +57,10 @@
                     android:gravity="center"
                     android:text="Profile"
                     android:textColor="@color/main"
-                    android:fontFamily="@font/alice"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/roboto_condensed_light"
                     android:textSize="20sp"
-                    android:paddingBottom="5dp"/>
+                    android:paddingBottom="5dp" />
 
             </LinearLayout>
             <LinearLayout
@@ -95,15 +96,17 @@
                         android:textColor="@color/white" />
 
                 </LinearLayout>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="History"
                     android:textColor="@color/main"
-                    android:fontFamily="@font/alice"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/roboto_condensed_light"
                     android:textSize="20sp"
-                    android:paddingBottom="5dp"/>
+                    android:paddingBottom="5dp" />
 
             </LinearLayout>
             <LinearLayout
@@ -139,15 +142,17 @@
 
 
                 </LinearLayout>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Security"
                     android:textColor="@color/main"
-                    android:fontFamily="@font/alice"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/roboto_condensed_light"
                     android:textSize="20sp"
-                    android:paddingBottom="5dp"/>
+                    android:paddingBottom="5dp" />
 
             </LinearLayout>
             <LinearLayout
@@ -181,15 +186,17 @@
                         android:textColor="@color/white"
                         android:paddingBottom="5dp"/>
                 </LinearLayout>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Complaint"
                     android:textColor="@color/main"
-                    android:fontFamily="@font/alice"
-                    android:textSize="16sp"
-                    android:paddingBottom="5dp"/>
+                    android:textStyle="bold"
+                    android:fontFamily="@font/roboto_condensed_light"
+                    android:textSize="18sp"
+                    android:paddingBottom="5dp" />
 
             </LinearLayout>
 
@@ -234,15 +241,17 @@
                         android:textColor="@color/white"
                         android:paddingBottom="5dp"/>
                 </LinearLayout>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="policies"
                     android:textColor="@color/main"
-                    android:fontFamily="@font/alice"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/roboto_condensed_light"
                     android:textSize="20sp"
-                    android:paddingBottom="5dp"/>
+                    android:paddingBottom="5dp" />
 
             </LinearLayout>
 
@@ -277,15 +286,17 @@
                         android:textColor="@color/white"
                         android:paddingBottom="5dp"/>
                 </LinearLayout>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="T-O-S"
                     android:textColor="@color/main"
-                    android:fontFamily="@font/alice"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/roboto_condensed_light"
                     android:textSize="20sp"
-                    android:paddingBottom="5dp"/>
+                    android:paddingBottom="5dp" />
 
             </LinearLayout>
 
@@ -320,19 +331,22 @@
                         android:textColor="@color/white"
                         android:paddingBottom="5dp"/>
                 </LinearLayout>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="About"
                     android:textColor="@color/main"
-                    android:fontFamily="@font/alice"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/roboto_condensed_light"
                     android:textSize="20sp"
-                    android:paddingBottom="5dp"/>
+                    android:paddingBottom="5dp" />
 
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/logout"
                 android:layout_width="0dp"
                 android:layout_height="105dp"
                 android:layout_marginEnd="10dp"
@@ -363,15 +377,17 @@
                         android:textColor="@color/white"
                         android:paddingBottom="5dp"/>
                 </LinearLayout>
+
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Logout"
                     android:textColor="@color/main"
-                    android:fontFamily="@font/alice"
+                    android:textStyle="bold"
+                    android:fontFamily="@font/roboto_condensed_light"
                     android:textSize="20sp"
-                    android:paddingBottom="5dp"/>
+                    android:paddingBottom="5dp" />
 
             </LinearLayout>
 

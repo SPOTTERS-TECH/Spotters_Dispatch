@@ -260,7 +260,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerAdapter2.
                     protected Map<String, String> getParams() throws AuthFailureError {
                         HashMap<String, String> params = new HashMap<>();
                         params.put("status", checkonline);
-                        params.put("ID", fid);
+                        params.put("rider_id", fid);
 
                         return params;
                     }
@@ -349,6 +349,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerAdapter2.
         LinearLayout complaint = (LinearLayout) view.findViewById(R.id.complaint_lay);
         LinearLayout terms = (LinearLayout) view.findViewById(R.id.terms_lay);
         LinearLayout policies = (LinearLayout) view.findViewById(R.id.policies_lay);
+        @SuppressLint({"MissingInflatedId", "LocalSuppress"}) LinearLayout logout = (LinearLayout) view.findViewById(R.id.logout);
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) LinearLayout abouut = (LinearLayout) view.findViewById(R.id.about_lay);
         @SuppressLint({"MissingInflatedId", "LocalSuppress"}) LinearLayout profile = (LinearLayout) view.findViewById(R.id.profile_lay);
 
@@ -357,6 +358,14 @@ public class MainActivity extends AppCompatActivity implements RecyclerAdapter2.
             public void onClick(View view) {
                 dialog.dismiss();
                 startActivity(new Intent(getApplicationContext(), com.example.spottersdispatch.history.class));
+            }
+        });
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), UserLogin.class));
+                finish();
             }
         });
 

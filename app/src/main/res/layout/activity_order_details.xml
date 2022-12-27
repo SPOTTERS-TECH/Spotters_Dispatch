@@ -59,10 +59,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:fontFamily="@font/alice"
+                    android:fontFamily="@font/roboto_condensed_light"
+                    android:textStyle="bold"
                     android:textSize="16sp"
                     android:layout_alignParentStart="true"
-                    android:text="Sender Name"/>
+                    android:text="Sender Name" />
 
                 <TextView
                     android:id="@+id/sender_name"
@@ -90,10 +91,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:fontFamily="@font/alice"
+                    android:fontFamily="@font/roboto_condensed_light"
+                    android:textStyle="bold"
                     android:textSize="16sp"
                     android:layout_alignParentStart="true"
-                    android:text="Receiver name"/>
+                    android:text="Receiver name" />
 
                 <TextView
                     android:id="@+id/receiver_name"
@@ -121,10 +123,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:fontFamily="@font/alice"
+                    android:fontFamily="@font/roboto_condensed_light"
+                    android:textStyle="bold"
                     android:textSize="16sp"
                     android:layout_alignParentStart="true"
-                    android:text="Sender Address"/>
+                    android:text="Sender Address" />
 
                 <TextView
                     android:id="@+id/sender_address"
@@ -152,10 +155,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:fontFamily="@font/alice"
+                    android:fontFamily="@font/roboto_condensed_light"
+                    android:textStyle="bold"
                     android:textSize="16sp"
                     android:layout_alignParentStart="true"
-                    android:text="Receiver Destination"/>
+                    android:text="Receiver Destination" />
 
                 <TextView
                     android:id="@+id/sender_destination"
@@ -183,10 +187,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:fontFamily="@font/alice"
+                    android:fontFamily="@font/roboto_condensed_light"
+                    android:textStyle="bold"
                     android:textSize="16sp"
                     android:layout_alignParentStart="true"
-                    android:text="Sender Phone"/>
+                    android:text="Sender Phone" />
 
                 <TextView
                     android:id="@+id/sender_phone"
@@ -214,10 +219,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:fontFamily="@font/alice"
+                    android:fontFamily="@font/roboto_condensed_light"
+                    android:textStyle="bold"
                     android:textSize="16sp"
                     android:layout_alignParentStart="true"
-                    android:text="Package type"/>
+                    android:text="Package type" />
 
                 <TextView
                     android:id="@+id/package_type"
@@ -245,10 +251,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:fontFamily="@font/alice"
+                    android:fontFamily="@font/roboto_condensed_light"
+                    android:textStyle="bold"
                     android:textSize="16sp"
                     android:layout_alignParentStart="true"
-                    android:text="Date delivered"/>
+                    android:text="Date delivered" />
 
                 <TextView
                     android:id="@+id/date_completed"
@@ -276,10 +283,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:fontFamily="@font/alice"
+                    android:fontFamily="@font/roboto_condensed_light"
+                    android:textStyle="bold"
                     android:textSize="16sp"
                     android:layout_alignParentStart="true"
-                    android:text="Order Id"/>
+                    android:text="Order Id" />
 
                 <TextView
                     android:id="@+id/Sender_order_id"
@@ -308,10 +316,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:fontFamily="@font/alice"
+                    android:fontFamily="@font/roboto_condensed_light"
+                    android:textStyle="bold"
                     android:textSize="16sp"
                     android:layout_alignParentStart="true"
-                    android:text="package image"/>
+                    android:text="package image" />
 
                 <ImageView
                     android:id="@+id/package_img"

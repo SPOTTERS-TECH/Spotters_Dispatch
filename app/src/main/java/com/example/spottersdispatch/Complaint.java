@@ -36,7 +36,7 @@ public class Complaint extends AppCompatActivity {
     Button complain_btn;
     Spinner comp_category, issue_type;
     String comp_category_text, issue_type_text;
-    final static String submit_url = "https://iufmp.spotters.tech/android/complaint.php";
+    final static String submit_url = "https://spotters.tech/dispatch-it/android/complaint.php";
     ArrayList<String> complainlist = new ArrayList<>();
     ArrayList<String> issuelist = new ArrayList<>();
     ArrayAdapter<String> adapter, issueadapter;
@@ -61,9 +61,8 @@ public class Complaint extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences(SHARED_PREF_NAME,MODE_PRIVATE);
 
-        lnamen = sharedPreferences.getString(KEY_LNAME,null);
-        fnamen = sharedPreferences.getString(KEY_FNAME,null);
-
+        lnamen = sharedPreferences.getString(KEY_LNAME, null);
+        fnamen = sharedPreferences.getString(KEY_FNAME, null);
 
 
         complain = findViewById(R.id.Complaint);
@@ -71,8 +70,8 @@ public class Complaint extends AppCompatActivity {
         comp_category = findViewById(R.id.comp_category_spinner);
         issue_type = findViewById(R.id.issue_type_spinner);
         RequestQueue requestQueue = Volley.newRequestQueue(this);
-        String url_complain = "https://iufmpgrm.oyostate.gov.ng/android/spinner_options_comp_category.php";
-        String url_issue = "https://iufmpgrm.oyostate.gov.ng/android/spinner_options_issue_type.php";
+        String url_complain = "https:///spotters.tech/dispatch-it/android/spinner_options_comp_category.php";
+        String url_issue = "https:///spotters.tech/dispatch-it/android/spinner_options_issue_type.php";
 
 
         // THE CODE THAT PUSHES THE SPINNER CATEGORY TO THE DB
@@ -229,8 +228,8 @@ public class Complaint extends AppCompatActivity {
                 Params.put("c_message", complaint);
                 Params.put("comp_category", comp_category_text);
                 Params.put("issue_name", issue_type_text);
-                Params.put("firstname", fnamen);
-                Params.put("lastname", lnamen);
+                Params.put("c_firstname", fnamen);
+                Params.put("c_lastname", lnamen);
                 return Params;
             }
         };
