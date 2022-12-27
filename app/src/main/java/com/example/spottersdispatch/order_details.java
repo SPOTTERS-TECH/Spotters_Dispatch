@@ -3,10 +3,16 @@ package com.example.spottersdispatch;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -26,10 +32,11 @@ import java.util.Map;
 
 public class order_details extends AppCompatActivity {
 
-    TextView sender_name, receiver_name, sender_address, sender_destination, sender_phone, package_type, sender_order_id;
-    Button accept_order;
-    final static String url_updatestatus = "https://spotters.tech/dispatch_app/android/accept_order_status_change.php";
+    TextView sender_name, receiver_name, sender_address, sender_destination, sender_phone, package_type, sender_order_id, lay1_txt;
+    Button accept_order, calluser, trackmap;
+    final static String url_updatestatus = "https://spotters.tech/dispatch-it/android/accept_order_status_change.php";
     String phonen, fid, fnamen, lnamen, status, rider_name;
+    RelativeLayout call_start, lay1;
 
     SharedPreferences sharedPreferences;
     private static final String SHARED_PREF_NAME = "mypref";
@@ -40,6 +47,7 @@ public class order_details extends AppCompatActivity {
     private static final String KEY_ID = "id";
     private static final String KEY_STATUS = "status";
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +69,12 @@ public class order_details extends AppCompatActivity {
         package_type = findViewById(R.id.package_type);
         sender_order_id = findViewById(R.id.Sender_order_id);
         accept_order = findViewById(R.id.acceptorder);
+        call_start = findViewById(R.id.call_start);
+        calluser = findViewById(R.id.call_receipient);
+        lay1 = findViewById(R.id.lay1_o);
+        lay1_txt = findViewById(R.id.lay1_txt);
+        trackmap = findViewById(R.id.trackmap);
+
 
         String s_name = getIntent().getStringExtra("sender_name");
         String S_phone = getIntent().getStringExtra("sender_phone");
@@ -73,9 +87,31 @@ public class order_details extends AppCompatActivity {
         String order_id = getIntent().getStringExtra("id");
         String statusofitem = getIntent().getStringExtra("statusofitem");
 
+        calluser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(Intent.ACTION_DIAL);
+                intent.setData(Uri.parse("tel:" + S_phone));
+
+                startActivity(intent);
+            }
+        });
+
+        trackmap.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("http://maps.google.com/maps?q=" + s_destination));
+                startActivity(intent);
+            }
+        });
+
         if (statusofitem.equals("Accepted")) {
             accept_order.setVisibility(View.GONE);
+            call_start.setVisibility(View.VISIBLE);
         }
+
 
         sender_name.setText(s_name);
         receiver_name.setText(r_name);
@@ -86,6 +122,7 @@ public class order_details extends AppCompatActivity {
         sender_order_id.setText(order_id);
 
         acceptorderclick(order_id, s_name);
+
 
     }
 
@@ -101,7 +138,14 @@ public class order_details extends AppCompatActivity {
                             JSONObject jsonObject = new JSONObject(response);
                             String success = jsonObject.getString("success");
                             if (success.equals("1")) {
+
                                 Toast.makeText(getApplicationContext(), "You have accepted " + name + " request", Toast.LENGTH_LONG).show();
+                                accept_order.setVisibility(View.GONE);
+                                call_start.setVisibility(View.VISIBLE);
+                                ScaleAnimation animation = new ScaleAnimation(0.8f, 1.0f, 1f, 1f, Animation.RELATIVE_TO_SELF, 0.0f, Animation.RELATIVE_TO_SELF, 0.0f);
+                                animation.setDuration(800);
+                                animation.setFillAfter(true);
+                                call_start.startAnimation(animation);
                                 // startActivity(new Intent(getApplicationContext(),MainActivity.class));
                                 //onRestart();
 
@@ -137,7 +181,11 @@ public class order_details extends AppCompatActivity {
         });
     }
 
+
     public void backbtn(View view) {
+//        overridePendingTransition(0, 0);
+//        startActivity(new Intent(getApplicationContext(),MainActivity.class));
+//        overridePendingTransition(0, 0);
         onBackPressed();
     }
 }

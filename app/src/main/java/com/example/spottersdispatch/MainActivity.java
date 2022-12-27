@@ -45,11 +45,11 @@ public class MainActivity extends AppCompatActivity implements RecyclerAdapter2.
     String rider_name, fid;
     TextView today_orders, username, user_phone, txtonline;
     String avalability = "Offline";
-    ImageView imgonline;
+    ImageView imgonline, refresh;
 
     private ArrayList<Product> userListt = new ArrayList<>();
-    final static String load_items_accepted = "https://spotters.tech/dispatch_app/android/order_request.php";
-    final static String url_updatestatus = "https://spotters.tech/dispatch_app/android/status_change.php";
+    final static String load_items_accepted = "https://spotters.tech/dispatch-it/android/order_request.php";
+    final static String url_updatestatus = "https://spotters.tech/dispatch-it/android/status_change.php";
 
     SharedPreferences sharedPreferences;
     private static final String SHARED_PREF_NAME = "mypref";
@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerAdapter2.
     private static final String KEY_LNAME = "lname";
     private static final String KEY_ID = "id";
     private static final String KEY_STATUS = "status";
+
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -70,6 +71,17 @@ public class MainActivity extends AppCompatActivity implements RecyclerAdapter2.
         user_phone = (TextView) findViewById(R.id.user_phone);
         imgonline = (ImageView) findViewById(R.id.offlineimg);
         today_orders = findViewById(R.id.checkorder);
+        refresh = (ImageView) findViewById(R.id.refresh);
+
+        refresh.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+        
+                overridePendingTransition(0, 0);
+                startActivity(getIntent());
+                overridePendingTransition(0, 0);
+            }
+        });
 
 
         sharedPreferences = this.getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
@@ -86,6 +98,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerAdapter2.
             String checkingimgonline = txtonline.getText().toString();
             if (checkingimgonline.equals("Online")) {
                 imgonline.setBackgroundResource(R.drawable.ic_baseline_visibility_24);
+                txtonline.setTextColor(getResources().getColor(R.color.green));
             }
         }
 
@@ -207,10 +220,12 @@ public class MainActivity extends AppCompatActivity implements RecyclerAdapter2.
                 if (avalability.equals("Offline")) {
                     imgonline.setBackgroundResource(R.drawable.ic_baseline_visibility_24);
                     txtonline.setText("Online");
+                    txtonline.setTextColor(getResources().getColor(R.color.green));
                     avalability = "Online";
                 } else {
                     imgonline.setBackgroundResource(R.drawable.visibility_off);
                     txtonline.setText("Offline");
+                    txtonline.setTextColor(getResources().getColor(R.color.red));
                     avalability = "Offline";
                 }
                 String checkonline = txtonline.getText().toString();
@@ -416,6 +431,5 @@ public class MainActivity extends AppCompatActivity implements RecyclerAdapter2.
     public void gotonotification(View view) {
         startActivity(new Intent(getApplicationContext(), Notification.class));
     }
-
 
 }

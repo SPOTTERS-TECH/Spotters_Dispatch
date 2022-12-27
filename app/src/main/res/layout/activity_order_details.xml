@@ -9,7 +9,7 @@
     tools:context=".order_details">
 
     <RelativeLayout
-        android:id="@+id/lay1"
+        android:id="@+id/lay1_o"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/main"
@@ -27,6 +27,7 @@
             android:onClick="backbtn" />
 
         <TextView
+            android:id="@+id/lay1_txt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -38,13 +39,10 @@
     </RelativeLayout>
 
 
-    <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:cardCornerRadius="15dp"
-        android:layout_margin="20dp">
+
 
         <RelativeLayout
+            android:id="@+id/details"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:elevation="5dp"
@@ -71,12 +69,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:textSize="20sp"
-                    android:fontFamily="@font/alice"
+                    android:textSize="17sp"
+                    android:fontFamily="@font/roboto_condensed_light"
                     android:textColor="@color/black"
                     android:paddingEnd="15dp"
                     android:layout_alignParentEnd="true"
-                    android:text="John Paul"/>
+                    android:text="John Paul" />
 
             </RelativeLayout>
 
@@ -102,12 +100,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:textSize="20sp"
-                    android:fontFamily="@font/alice"
+                    android:textSize="17sp"
+                    android:fontFamily="@font/roboto_condensed_light"
                     android:textColor="@color/black"
                     android:paddingEnd="15dp"
                     android:layout_alignParentEnd="true"
-                    android:text="Samuel"/>
+                    android:text="Samuel" />
 
             </RelativeLayout>
 
@@ -133,12 +131,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:textSize="20sp"
-                    android:fontFamily="@font/alice"
+                    android:textSize="17sp"
+                    android:fontFamily="@font/roboto_condensed_light"
                     android:textColor="@color/black"
                     android:paddingEnd="15dp"
                     android:layout_alignParentEnd="true"
-                    android:text="ikorodu road"/>
+                    android:text="ikorodu road" />
 
             </RelativeLayout>
 
@@ -164,12 +162,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:textSize="20sp"
-                    android:fontFamily="@font/alice"
+                    android:textSize="17sp"
+                    android:fontFamily="@font/roboto_condensed_light"
                     android:textColor="@color/black"
                     android:paddingEnd="15dp"
                     android:layout_alignParentEnd="true"
-                    android:text="ikeja way"/>
+                    android:text="ikeja way" />
 
             </RelativeLayout>
 
@@ -195,12 +193,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:textSize="20sp"
-                    android:fontFamily="@font/alice"
+                    android:textSize="17sp"
+                    android:fontFamily="@font/roboto_condensed_light"
                     android:textColor="@color/black"
                     android:paddingEnd="15dp"
                     android:layout_alignParentEnd="true"
-                    android:text="070765443"/>
+                    android:text="070765443" />
 
             </RelativeLayout>
 
@@ -226,12 +224,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:textSize="20sp"
-                    android:fontFamily="@font/alice"
+                    android:textSize="17sp"
+                    android:fontFamily="@font/roboto_condensed_light"
                     android:textColor="@color/black"
                     android:paddingEnd="15dp"
                     android:layout_alignParentEnd="true"
-                    android:text="laptop"/>
+                    android:text="laptop" />
 
             </RelativeLayout>
 
@@ -257,12 +255,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:textSize="20sp"
-                    android:fontFamily="@font/alice"
+                    android:textSize="17sp"
+                    android:fontFamily="@font/roboto_condensed_light"
                     android:textColor="@color/black"
                     android:paddingEnd="15dp"
                     android:layout_alignParentEnd="true"
-                    android:text="21-12-2022"/>
+                    android:text="21-12-2022" />
 
             </RelativeLayout>
 
@@ -288,12 +286,12 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:textSize="20sp"
-                    android:fontFamily="@font/alice"
+                    android:textSize="17sp"
+                    android:fontFamily="@font/roboto_condensed_light"
                     android:textColor="@color/black"
                     android:paddingEnd="15dp"
                     android:layout_alignParentEnd="true"
-                    android:text="SP-3478"/>
+                    android:text="SP-3478" />
 
             </RelativeLayout>
 
@@ -332,7 +330,6 @@
 
 
         </RelativeLayout>
-    </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/acceptorder"
@@ -340,8 +337,43 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:padding="15dp"
+        android:fontFamily="@font/roboto_condensed_light"
         android:layout_marginTop="20dp"
         android:text="Accept"
         app:cornerRadius="20dp" />
+
+    <RelativeLayout
+        android:id="@+id/call_start"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/call_receipient"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:padding="15dp"
+            android:fontFamily="@font/roboto_condensed_light"
+            android:layout_marginTop="20dp"
+            android:text="call"
+            app:cornerRadius="150dp" />
+
+        <Button
+            android:id="@+id/trackmap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignEnd="@id/call_receipient"
+            android:layout_alignParentEnd="true"
+            android:layout_marginHorizontal="20dp"
+            android:fontFamily="@font/roboto_condensed_light"
+            android:layout_marginTop="20dp"
+            android:layout_toEndOf="@+id/call_receipient"
+            android:padding="15dp"
+            android:text="Goto map"
+            app:cornerRadius="20dp" />
+
+    </RelativeLayout>
+
 
 </LinearLayout>

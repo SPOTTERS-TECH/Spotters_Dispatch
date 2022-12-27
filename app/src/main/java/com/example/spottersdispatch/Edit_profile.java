@@ -44,7 +44,7 @@ public class Edit_profile extends AppCompatActivity {
     String fid;
     final  int CODE_GALLERY_REQUEST = 999;
     ImageView profile_img;
-    final static String url_profile =  "https://spotters.tech/dispatch_app/android/edit_profile.php";
+    final static String url_profile = "https://spotters.tech/dispatch-it/android/edit_profile.php";
 
     SharedPreferences sharedPreferences;
     private static final String SHARED_PREF_NAME = "mypref";
@@ -191,11 +191,11 @@ public class Edit_profile extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> params = new HashMap<>();
-                params.put("firstname", firstname);
-                params.put("lastname", lastname);
-                params.put("email", email);
-                params.put("phone", phone);
-                params.put("id",id);
+                params.put("rider_fn", firstname);
+                params.put("rider_ln", lastname);
+                params.put("rider_em", email);
+                params.put("rider_ph", phone);
+                params.put("rider_id", id);
                 return params;
             }
         };

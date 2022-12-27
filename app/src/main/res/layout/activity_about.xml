@@ -96,63 +96,6 @@
     </RelativeLayout>
 
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="5dp"
-        android:layout_marginTop="10dp">
-
-        <TextView
-            android:id="@+id/privacy_policy"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
-            android:fontFamily="@font/roboto_condensed_light"
-            android:text="Privacy policy"
-            android:textColor="@color/black"
-            android:textColorLink="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@id/privacy_policy"
-            android:background="@color/gray"
-            android:layout_marginTop="20dp"/>
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="5dp"
-        android:layout_marginTop="10dp">
-
-        <TextView
-            android:id="@+id/terms_of_service"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
-            android:fontFamily="@font/roboto_condensed_light"
-            android:text="Terms of services"
-            android:textColor="@color/black"
-            android:textColorLink="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_below="@id/terms_of_service"
-            android:background="@color/gray"
-            android:layout_marginTop="20dp"/>
-
-    </RelativeLayout>
-
-
     <TextView
         android:id="@+id/jch"
         android:layout_width="match_parent"

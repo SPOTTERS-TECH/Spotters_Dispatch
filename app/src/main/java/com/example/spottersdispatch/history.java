@@ -34,7 +34,7 @@ public class history extends AppCompatActivity implements history_RecyclerAdapte
     history_RecyclerAdapter adapter2;
     ImageView backbtn;
     private ArrayList<history_Product> userListt = new ArrayList<>();
-    final static String load_items = "https://iufmp.spotters.tech/android/history_request.php";
+    final static String load_items = "https://spotters.tech/dispatch-it/android/history_request.php";
     String fnamen,lnamen,phonen,fid;
     String rider_name ;
 

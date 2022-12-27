@@ -33,7 +33,7 @@ public class Accepted_orders extends AppCompatActivity implements Accepted_Adapt
     Accepted_Adapter adapter2;
     String phonen, fid, fnamen, lnamen, status, rider_name;
     private ArrayList<Product> userListt = new ArrayList<>();
-    final static String load_items_accepted = "https://spotters.tech/dispatch_app/android/order_request.php";
+    final static String load_items_accepted = "https://spotters.tech/dispatch-it/android/order_request.php";
 
     SharedPreferences sharedPreferences;
     private static final String SHARED_PREF_NAME = "mypref";

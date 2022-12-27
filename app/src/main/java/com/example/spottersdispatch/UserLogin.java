@@ -60,7 +60,7 @@ public class UserLogin extends AppCompatActivity {
     private Executor executor;
     private BiometricPrompt biometricPrompt;
     private BiometricPrompt.PromptInfo promptInfo;
-    private final static String Url_login = "https://spotters.tech/dispatch_app/android/login.php";
+    private final static String Url_login = "https://spotters.tech/dispatch-it/android/login.php";
 
     //    importing shared prefrrence
     SharedPreferences sharedPreferences;
@@ -302,8 +302,8 @@ public class UserLogin extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> params = new HashMap<>();
-                params.put("phone", phone);
-                params.put("password", password);
+                params.put("rider_ph", phone);
+                params.put("rider_password", password);
                 return params;
             }
         };

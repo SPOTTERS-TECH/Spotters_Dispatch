@@ -29,7 +29,7 @@ public class Security extends AppCompatActivity {
     EditText old_password,new_password,re_type_password;
     AppCompatButton pass_btn;
     String fid;
-    final static String url_updatepassword = "https://spotters.tech/dispatch_app/android/edit_password.php";
+    final static String url_updatepassword = "https://spotters.tech/dispatch-it/android/edit_password.php";
 
     SharedPreferences sharedPreferences;
     private static final String SHARED_PREF_NAME = "mypref";
@@ -116,8 +116,8 @@ public class Security extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> params = new HashMap<>();
-                params.put("password",newpassword);
-                params.put("ID",id);
+                params.put("rider_password", newpassword);
+                params.put("rider_id", id);
                 return params;
             }
         };
