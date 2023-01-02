@@ -9,7 +9,9 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
@@ -31,9 +33,10 @@ import java.util.Map;
 public class Accepted_orders extends AppCompatActivity implements Accepted_Adapter.onItemClickListener {
     RecyclerView recyclerView2;
     Accepted_Adapter adapter2;
-    String phonen, fid, fnamen, lnamen, status, rider_name;
+    ImageView no_order;
+    String phonen, fid, fnamen, lnamen, status, rider_name, company_id;
     private ArrayList<Product> userListt = new ArrayList<>();
-    final static String load_items_accepted = "https://spotters.tech/dispatch-it/android/order_request.php";
+    final static String load_items_accepted = "https://spotters.tech/dispatch-it/android/accepted_order_track.php";
 
     SharedPreferences sharedPreferences;
     private static final String SHARED_PREF_NAME = "mypref";
@@ -43,6 +46,8 @@ public class Accepted_orders extends AppCompatActivity implements Accepted_Adapt
     private static final String KEY_LNAME = "lname";
     private static final String KEY_ID = "id";
     private static final String KEY_STATUS = "status";
+    private static final String KEY_COMPANY_ID = "company_id";
+    final Loadingdialog loadingdialog = new Loadingdialog(Accepted_orders.this);
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -50,12 +55,16 @@ public class Accepted_orders extends AppCompatActivity implements Accepted_Adapt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_accepted_orders);
 
+        loadingdialog.showLoadingDialog();
+        no_order = findViewById(R.id.no_order);
+
         sharedPreferences = this.getSharedPreferences(SHARED_PREF_NAME, MODE_PRIVATE);
         phonen = sharedPreferences.getString(KEY_PHONE, null);
         fnamen = sharedPreferences.getString(KEY_FNAME, null);
         lnamen = sharedPreferences.getString(KEY_LNAME, null);
         status = sharedPreferences.getString(KEY_STATUS, null);
         fid = sharedPreferences.getString(KEY_ID, null);
+        company_id = sharedPreferences.getString(KEY_COMPANY_ID, null);
         rider_name = fnamen + " " + lnamen;
 
         //  RECYCLERVIEW2
@@ -95,20 +104,34 @@ public class Accepted_orders extends AppCompatActivity implements Accepted_Adapt
 
                         userListt.add(0, product);
 
-
+                        final Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                loadingdialog.dismissDialog();
+                            }
+                        }, 1000);
                     }
 
 
                     adapter2 = new Accepted_Adapter(Accepted_orders.this, userListt);
                     recyclerView2.setAdapter(adapter2);
                     adapter2.notifyDataSetChanged();
-//                    int count = 0;
-//                    if (adapter2 != null) {
-//                        count = adapter2.getItemCount();
-//                        String counts = String.valueOf(count);
-//                        today_orders.setText(counts + " total orders");
-//                        System.out.println("hey" + count);
-//                    }
+                    int count = 0;
+                    if (adapter2 != null) {
+                        count = adapter2.getItemCount();
+                        String counts = String.valueOf(count);
+                        if (counts.equals("0")) {
+                            final Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    loadingdialog.dismissDialog();
+                                }
+                            }, 1000);
+                            no_order.setVisibility(View.VISIBLE);
+                        }
+                    }
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -127,6 +150,8 @@ public class Accepted_orders extends AppCompatActivity implements Accepted_Adapt
                 HashMap<String, String> params = new HashMap<>();
                 params.put("rider_id", fid);
                 params.put("status", "Accepted");
+                params.put("created_by_id", company_id);
+
                 return params;
             }
         };

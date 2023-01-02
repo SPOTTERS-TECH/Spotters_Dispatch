@@ -35,7 +35,7 @@ public class order_details extends AppCompatActivity {
     TextView sender_name, receiver_name, sender_address, sender_destination, sender_phone, package_type, sender_order_id, lay1_txt;
     Button accept_order, calluser, trackmap;
     final static String url_updatestatus = "https://spotters.tech/dispatch-it/android/accept_order_status_change.php";
-    String phonen, fid, fnamen, lnamen, status, rider_name;
+    String phonen, fid, fnamen, lnamen, status, rider_name, company_id;
     RelativeLayout call_start, lay1;
 
     SharedPreferences sharedPreferences;
@@ -46,6 +46,7 @@ public class order_details extends AppCompatActivity {
     private static final String KEY_LNAME = "lname";
     private static final String KEY_ID = "id";
     private static final String KEY_STATUS = "status";
+    private static final String KEY_COMPANY_ID = "company_id";
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -59,6 +60,7 @@ public class order_details extends AppCompatActivity {
         lnamen = sharedPreferences.getString(KEY_LNAME, null);
         status = sharedPreferences.getString(KEY_STATUS, null);
         fid = sharedPreferences.getString(KEY_ID, null);
+        company_id = sharedPreferences.getString(KEY_COMPANY_ID, null);
         rider_name = fnamen + " " + lnamen;
 
         sender_name = findViewById(R.id.sender_name);
@@ -169,6 +171,9 @@ public class order_details extends AppCompatActivity {
                         HashMap<String, String> params = new HashMap<>();
                         params.put("status", "Accepted");
                         params.put("rider_id", fid);
+                        params.put("created_by_id", company_id);
+                        params.put("rider_name", rider_name);
+                        params.put("rider_phone", phonen);
                         params.put("order_id", orderid);
 
                         return params;

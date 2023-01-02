@@ -10,4 +10,5 @@
     <string name="app_name_link">
     <a href="https://spotters.tech/">The Spotters Company</a>
     </string>
+    <string name="details"><u>details</u></string>
 </resources>

@@ -148,7 +148,7 @@
                     android:paddingTop="4dp"
                     android:paddingLeft="10dp"
                     android:fontFamily="@font/alice"
-                    android:text="details"
+                    android:text="@string/details"
                     android:layout_centerVertical="true"
                     android:textColor="#FF0000"
                     android:textSize="20sp"/>

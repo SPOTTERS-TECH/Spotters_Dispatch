@@ -73,6 +73,8 @@ public class UserLogin extends AppCompatActivity {
     private static final String KEY_EMAIL = "email";
     private static final String KEY_ID = "id";
     private static final String KEY_STATUS = "status";
+    private static final String KEY_COMPANY_ID = "company_id";
+
     //    private static final String KEY_PHONE = "phone";
     String Phonen;
 
@@ -106,6 +108,7 @@ public class UserLogin extends AppCompatActivity {
         String lnamen = sharedPreferences.getString(KEY_LNAME, null);
         String lphone = sharedPreferences.getString(KEY_PHONE, null);
         String lpassword = sharedPreferences.getString(KEY_PASSWORD, null);
+        String company_id = sharedPreferences.getString(KEY_COMPANY_ID, null);
 //        if(Phonen != null && fnamen != null && lnamen != null && fid != null ){
 //            Intent gotoWelcomeActivity = new Intent(UserLogin.this, MainActivity .class);
 //            startActivity(gotoWelcomeActivity);
@@ -250,8 +253,9 @@ public class UserLogin extends AppCompatActivity {
                             String lastname = object.getString("lastname").trim();
                             String phone = object.getString("phone").trim();
                             String email = object.getString("email").trim();
-                            String id = object.getString("id").trim();
+                            String id = object.getString("ids").trim();
                             String status = object.getString("status").trim();
+                            String company_id = object.getString("company_id").trim();
                             // String sign_up_date = object.getString("sign_up_date").t
                             // rim();
 
@@ -263,6 +267,7 @@ public class UserLogin extends AppCompatActivity {
                             editor.putString(KEY_LNAME, lastname.toString());
                             editor.putString(KEY_ID, id.toString());
                             editor.putString(KEY_STATUS, status.toString());
+                            editor.putString(KEY_COMPANY_ID, company_id.toString());
 
                             editor.apply();
 
@@ -270,7 +275,7 @@ public class UserLogin extends AppCompatActivity {
 
                             // gotoWelcomeActivity.putExtra("sign_up_date", sign_up_date);
                             load.setVisibility(View.GONE);
-                            createdialog(firstname, lastname, phone, email, id, status);
+                            createdialog(firstname, lastname, phone, email, id, status, company_id);
                             // finish();
                         }
 
@@ -313,7 +318,7 @@ public class UserLogin extends AppCompatActivity {
     }
 
     @SuppressLint("ResourceAsColor")
-    private void createdialog(String firstname, String lastname, String phone, String email, String id, String status) {
+    private void createdialog(String firstname, String lastname, String phone, String email, String id, String status, String company_id) {
         cont_lay.setVisibility(View.VISIBLE);
         cont_msg.setText("Login Successful");
         cont_lay.setVisibility(View.VISIBLE);
@@ -330,6 +335,8 @@ public class UserLogin extends AppCompatActivity {
                 intent.putExtra("email", email);
                 intent.putExtra("id", id);
                 intent.putExtra("status", status);
+                intent.putExtra("company_id", company_id);
+
                 UserLogin.this.startActivity(intent);
                 UserLogin.this.finish();
             }

@@ -100,13 +100,14 @@ public class Edit_profile extends AppCompatActivity {
                 String Temail = email.getText().toString().trim();
                 String Tphone = userphone.getText().toString().trim();
 
-                if(Tfname.isEmpty() || Tlname.isEmpty() || Temail.isEmpty() || Tphone.isEmpty()){
+                if (Tfname.isEmpty() || Tlname.isEmpty() || Temail.isEmpty() || Tphone.isEmpty()) {
                     fname.setError("Empty field");
                     lname.setError("Empty field");
                     email.setError("Empty field");
                     userphone.setError("Empty field");
-                }
-                else{
+                } else if (Tfname.equals(fnamen) && Tphone.equals(lnamen) && Temail.equals(emailn) && Tphone.equals(Phonen)) {
+                    Toast.makeText(Edit_profile.this, "No change was detected", Toast.LENGTH_SHORT).show();
+                } else {
                     editprofile();
                 }
 

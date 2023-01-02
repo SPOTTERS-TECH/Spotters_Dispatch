@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -41,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerAdapter2.
     private int selectedTab = 1;
     RecyclerView recyclerView2;
     RecyclerAdapter2 adapter2;
-    String fnamen, lnamen, phonen, status;
+    String fnamen, lnamen, phonen, status, company_id;
     String rider_name, fid;
     TextView today_orders, username, user_phone, txtonline;
     String avalability = "Offline";
@@ -59,13 +60,17 @@ public class MainActivity extends AppCompatActivity implements RecyclerAdapter2.
     private static final String KEY_LNAME = "lname";
     private static final String KEY_ID = "id";
     private static final String KEY_STATUS = "status";
-
+    private static final String KEY_COMPANY_ID = "company_id";
+    final Loadingdialog loadingdialog = new Loadingdialog(MainActivity.this);
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        loadingdialog.showLoadingDialog();
+
         username = (TextView) findViewById(R.id.username);
         txtonline = (TextView) findViewById(R.id.txtonline);
         user_phone = (TextView) findViewById(R.id.user_phone);
@@ -90,6 +95,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerAdapter2.
         lnamen = sharedPreferences.getString(KEY_LNAME, null);
         status = sharedPreferences.getString(KEY_STATUS, null);
         fid = sharedPreferences.getString(KEY_ID, null);
+        company_id = sharedPreferences.getString(KEY_COMPANY_ID, null);
         rider_name = fnamen + " " + lnamen;
         if (phonen != null && fnamen != null && fid != null) {
             username.setText("Hello, " + lnamen);
@@ -301,7 +307,13 @@ public class MainActivity extends AppCompatActivity implements RecyclerAdapter2.
                         Product product = new Product(order_id, rec_name, rec_phone, rec_address, package_name, package_weight, receiver_name, receiver_phone, destination, statusofitem);
 
                         userListt.add(0, product);
-
+                        final Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                loadingdialog.dismissDialog();
+                            }
+                        }, 1000);
 
                     }
 
@@ -314,8 +326,17 @@ public class MainActivity extends AppCompatActivity implements RecyclerAdapter2.
                         count = adapter2.getItemCount();
                         String counts = String.valueOf(count);
                         today_orders.setText(counts + " total orders");
-                        System.out.println("hey" + count);
+                        if (counts.equals("0")) {
+                            final Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    loadingdialog.dismissDialog();
+                                }
+                            }, 1000);
+                        }
                     }
+
 
                 } catch (JSONException e) {
                     e.printStackTrace();
@@ -332,7 +353,7 @@ public class MainActivity extends AppCompatActivity implements RecyclerAdapter2.
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 HashMap<String, String> params = new HashMap<>();
-                params.put("rider_id", fid);
+                params.put("created_by_id", company_id);
                 params.put("status", "Pending");
                 return params;
             }

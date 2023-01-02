@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -36,7 +37,7 @@ public class history extends AppCompatActivity implements history_RecyclerAdapte
     private ArrayList<history_Product> userListt = new ArrayList<>();
     final static String load_items = "https://spotters.tech/dispatch-it/android/history_request.php";
     String fnamen,lnamen,phonen,fid;
-    String rider_name ;
+    String rider_name;
 
     SharedPreferences sharedPreferences;
     private static final String SHARED_PREF_NAME = "mypref";
@@ -46,11 +47,14 @@ public class history extends AppCompatActivity implements history_RecyclerAdapte
     private static final String KEY_LNAME = "lname";
     private static final String KEY_ID = "id";
 
+    final Loadingdialog loadingdialog = new Loadingdialog(history.this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_history);
 
+        loadingdialog.showLoadingDialog();
         backbtn = findViewById(R.id.backbtn);
 
         recyclerView2 = (RecyclerView) findViewById(R.id.recyclerview);
@@ -97,12 +101,18 @@ public class history extends AppCompatActivity implements history_RecyclerAdapte
                         String rec_address = object.getString("rec_address").trim();
                         String destination = object.getString("destination").trim();
 
-                        // userListt.add(new history_Product(rec_name,destination,order_id));
-                        history_Product product = new history_Product(rec_name,destination,order_id,rec_phone,rec_address,distance);
+                        history_Product product = new history_Product(rec_name, destination, order_id, rec_phone, rec_address, distance);
 
-                        //Product product = new Product(order_id, rec_name, rec_phone, rec_address, distance + "km", destination);
 
-                        userListt.add(0,product);
+                        userListt.add(0, product);
+
+                        final Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                loadingdialog.dismissDialog();
+                            }
+                        }, 1000);
                     }
                     adapter2 = new history_RecyclerAdapter(userListt,history.this);
                     recyclerView2.setAdapter(adapter2);
